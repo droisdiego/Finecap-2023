@@ -1,1 +1,16 @@
 {% extends 'base.html' %} 
+
+{% block center %}
+<body>
+    <h1>{{reserva.nome_empresa}}</h1>
+    
+    {% if reserva.quitado %}        
+    <h3>A {{reserva.nome_empresa}} é uma empresa que proporciona um servio de {{reserva.categoria_empresa}} <br> A sua situação na FINECAP é de:</h3>
+    <h3 style="color: rgb(169, 221, 141);">Presença Confirmada</h3>
+    {% else %}
+    <h3>A {{reserva.nome_empresa}} é uma empresa que proporciona um servio de {{reserva.categoria_empresa}} <br> A sua situação na FINECAP é de: </h3>
+    <h3 style="color: rgb(221, 141, 141);">Ainda precisa confirmar a presença</h3>
+    {% endif %}
+</body>
+{% endblock center %}
+    
