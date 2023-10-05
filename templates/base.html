@@ -1,26 +1,47 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/basecss.css' %}">
 </head>
 <body>
+    <script src="{% static 'js/basejs.js' %}"></script>
     <header>
-        <nav>
-            <div>
-                <ul>
-                    <li><a href="">Início</a></li>
-                    <li><a href="">Cadastro</a></li>
+        <div class="container-fluid">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                  <li><a id="len1" class="hoverable" href="#">Lista de Reservas</a></li>
+                  <li><a id="len2" class="hoverable" href="#">Reserve Seu Stand</a></li>
+
                 </ul>
-            </div>
-        </nav>
+              </div>
+            </nav>
+            
     </header>
     <main>
+        <div id="what-the-hell-is-this">
+            <div class="page-title">
+              <h2>Simple Navigation</h2>
+              <p class="lead">
+                Based on Hover.css, the goal of this pen
+                is to create a simple navigation bar <br />
+                that can be easily reused in both mobile and native displays. Mouse over the nav text for animation!
+              </p>
+            </div>
+          </div>
+        </div>
         <div>
-            <p>stands</p>
+            
+            {% block center %}
+                
+            {% endblock center %}
+                
+            
         </div>
     </main>
 </body>
