@@ -1,4 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+
+from finecap.models import Reserva
 
 def index(request):
-     return render(request, "core/index.html")
+     reserva = Reserva.objects.all()
+     context = {'reserva':reserva}
+     return render (request, 'core/index.html',context)
+
+# def detalhe_reservas(request):
+     
