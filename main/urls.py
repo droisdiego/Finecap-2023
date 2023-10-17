@@ -19,12 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from finecap.views import index, detalhe_reserva#, cadastrar
+from finecap.views import Indexview, DetalheReservaView#, cadastrar
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('', index ,name='index'),
-    path('reserva/<int:id>',detalhe_reserva, name='reserva')
+    path('', Indexview.as_view() ,name='index'),
+    path('reserva/<int:id>',DetalheReservaView.as_view(), name='reserva')
     # path('cadastrar/', cadastrar,name='cadastrar')
 
 ]

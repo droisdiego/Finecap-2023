@@ -1,21 +1,24 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
-
+from django.views import generic
 from finecap.models import Reserva
 
-def index(request):
-     reserva = Reserva.objects.all()
-     context = {'reserva':reserva}
-     return render (request, 'core/index.html',context)
+# def index(request):
+#      reserva = Reserva.objects.all()
+#      context = {'reserva':reserva}
+#      return render (request, 'core/index.html',context)
+class Indexview(generic.TemplateView):
+    template_name = 'core/index.html'
 
-def detalhe_reserva(request, id):
-     reserva = get_object_or_404(Reserva, id=id)
-     context = {'reserva':reserva}
-     return render(request, 'core/reserva.html', context)
+    def get_context_data(self, **kwargs):
+        context = {'reserva': Reserva.objects.all()}
+        return context
 
-def quitadoresult(request):
-     HttpResponse("oi")
+class DetalheReservaView(generic.DetailView):
+    model = Reserva
+    template_name = 'core/reserva.html'
+    context_object_name = 'reserva'
 
-# def cadastrar(request):
-
-
+    def get_object(self, queryset=None):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Reserva, id=id)
