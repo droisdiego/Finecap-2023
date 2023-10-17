@@ -1,16 +1,40 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block center %}
+
+<style>
+    .caixa {
+        padding: 30px;
+        border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.026);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
+</style>
+
 <body>
-    <h1>{{reserva.nome_empresa}}</h1>
-    
-    {% if reserva.quitado %}        
-    <h3>A <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.nome_empresa}}</span> é uma empresa que proporciona um servio de <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.categoria_empresa}}</span> <br> A sua situação na FINECAP é de: </h3>
-    <h3 style="color: rgb(169, 221, 141);">Presença Confirmada</h3>
-    {% else %}
-    <h3>A <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.nome_empresa}}</span> é uma empresa que proporciona um servio de <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.categoria_empresa}}</span> <br> A sua situação na FINECAP é de: </h3>
-    <h3 style="color: rgb(221, 141, 141);">Ainda precisa confirmar a presença</h3>
-    {% endif %}
+    <div class="caixa">
+
+
+        <h1>{{reserva.nome_empresa}}</h1>
+
+        {% if reserva.quitado %}
+        <h3>A <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.nome_empresa}}</span> é uma empresa que
+            proporciona
+            um servio de <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.categoria_empresa}}</span> <br> A
+            sua
+            situação na FINECAP é de: </h3>
+        <h3 style="color: rgb(169, 221, 141);">Presença Confirmada</h3>
+        {% else %}
+        <h3>A <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.nome_empresa}}</span> é uma empresa que
+            proporciona
+            um servio de <span style="color: rgba(147, 205, 246, 0.835);">{{reserva.categoria_empresa}}</span> <br> A
+            sua
+            situação na FINECAP é de: </h3>
+        <h3 style="color: rgb(221, 141, 141);">Ainda precisa confirmar a presença</h3>
+        {% endif %}
+    </div>
 </body>
 {% endblock center %}
-    
