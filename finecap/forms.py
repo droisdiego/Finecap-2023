@@ -8,5 +8,7 @@ class CadastroForms(forms.ModelForm):
         fields = '__all__'
 
     widgets = {
-        'nome': forms.TextInput(attrs={'class':'form-control'})
+        'cnpj': forms.TextInput(attrs={'class': 'form-control'}),
+        'nome_empresa' : forms.TextInput(attrs={'class':'form-control'}),
+        'categoria_empresa' : forms.TextInput(attrs={'class':'form-control'}),
     }

@@ -4,15 +4,24 @@
 {% block center %}
 
 <body>
-    <form method="post">
-        <div>
-            <label for="">
+    
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        {{ form.cnpj }}
+    </div>
+    <div class="mb-3">
+        <label for="nome" class="form-label">Banda</label>
+        {{ form.nome_empresa }}
+    </div>
+    <div class="mb-3">
+        <label for="nome" class="form-label">Descrição</label>
+        {{ form.categoria_empresa }}
+    </div>
 
-            </label>
-        </div>
-
-
-    </form>    
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
 </body>    
 
 {% endblock center %}

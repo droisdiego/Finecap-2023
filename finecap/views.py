@@ -1,12 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
+from finecap.forms import CadastroForms
 from finecap.models import Reserva
 
-# def index(request):
-#      reserva = Reserva.objects.all()
-#      context = {'reserva':reserva}
-#      return render (request, 'core/index.html',context)
 class Indexview(generic.TemplateView):
     template_name = 'core/index.html'
 
@@ -22,3 +19,13 @@ class DetalheReservaView(generic.DetailView):
     def get_object(self, queryset=None):
         id = self.kwargs.get('id')
         return get_object_or_404(Reserva, id=id)
+
+def CadastroView(request):
+    if request.method == 'POST':
+        form = CadastroForms(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            form = CadastroForms()
+    else:
+        form = CadastroForms()
+    return render(request, 'core/cadastro.html', {'form': form})
