@@ -29,3 +29,21 @@ def CadastroView(request):
     else:
         form = CadastroForms()
     return render(request, 'core/cadastro.html', {'form': form})
+
+def EditarCadastroView(request,id):
+    reserva = get_object_or_404(Reserva, id=id)
+    if request.method == 'POST':
+        form = CadastroForms(request.POST, instance=reserva)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CadastroForms(instance=reserva)
+
+    return render(request, 'core/cadastro.html', {'form': form})
+
+
+def ExcluirCadastroView(request,id):
+    reserva = get_object_or_404(Reserva, id=id)
+    reserva.delete()
+    return redirect('index')

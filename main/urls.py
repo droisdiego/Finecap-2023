@@ -19,14 +19,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from finecap.views import Indexview, DetalheReservaView, CadastroView
+from finecap.views import Indexview, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
 
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('', Indexview.as_view() ,name='index'),
     path('reserva/<int:id>',DetalheReservaView.as_view(), name='reserva'),
-    path('cadastro/', CadastroView, name='cadastro'),
-    # path('cadastrar/', cadastrar,name='cadastrar')
+    path('reserva/cadastro/', CadastroView, name='cadastro'),
+    path('reserva/editarreserva/<int:id>', EditarCadastroView,name='editar'),
+    path('reserva/excluirreserva/<int:id>', ExcluirCadastroView,name='excluir'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  

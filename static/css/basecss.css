@@ -1,9 +1,5 @@
 
 
-/* {
-  background: rgb(0,0,0);
-  background: linear-gradient(131deg, rgba(0,0,0,1) 0%, rgba(67,2,172,0.8431022067029936) 100%);
-} */
 .hoverable{
   display:inline-block;
   backface-visibility: hidden;
@@ -79,9 +75,6 @@
   animation-duration: 2s;
 }
 
-
-
-/*everything below here is just setting up the page, so dont worry about it */
 
 
 @media (min-width: 768px) {
