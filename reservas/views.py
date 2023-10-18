@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic
-from finecap.forms import CadastroForms
-from finecap.models import Reserva
+from reservas.forms import CadastroForms
+from reservas.models import Reserva
 from django.contrib import messages
 
 class Indexview(generic.ListView):
@@ -11,7 +11,7 @@ class Indexview(generic.ListView):
     
 class DetalheReservaView(generic.DetailView):
     model = Reserva
-    template_name = 'core/reserva.html'
+    template_name = 'core/reserva_detail.html'
 
 class CadastroView(generic.CreateView):
     model = Reserva

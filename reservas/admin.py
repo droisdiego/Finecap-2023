@@ -5,6 +5,6 @@ from .models import *
 class ReservaAdmin(admin.ModelAdmin):
     list_display = ('nome_empresa','quitado')
 
-@admin.register(Stand)
-class StandAdmin(admin.ModelAdmin):
-    list_display = ('localizacao','valor',)
+# @admin.register(Stand)
+# class StandAdmin(admin.ModelAdmin):
+#     list_display = ('localizacao','valor',)
