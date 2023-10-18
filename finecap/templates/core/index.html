@@ -66,19 +66,20 @@
 
 
 <div class="cards-container">
-    {% for reserva in reserva %}
-    <a href="{% url 'reserva' id=reserva.id %}">
+    {% for reserva_item in reservas_list %}
+    <a href="{% url 'reserva' id=reserva_item.id %}">
         <ul>
             <li class="card">
                 <div>
-                    <h3>{{ reserva.nome_empresa }} </h3>
+                    <h3>{{ reserva_item.nome_empresa }} </h3>
                     <hr>
-                    <p>{{reserva.categoria_empresa}}</p>
+                    <p>{{reserva_item.categoria_empresa}}</p>
                 </div>
 
             </li>
+        </ul>
     </a>
-    </ul>
+
 
     {% endfor %}
 </div>

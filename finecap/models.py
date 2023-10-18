@@ -6,6 +6,8 @@ class Reserva(models.Model):
     categoria_empresa = models.CharField(max_length=100)
     quitado = models.BooleanField()
 
+    objects = models.Manager()
+
     def __str__(self):
         return self.nome_empresa
     

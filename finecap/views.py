@@ -4,13 +4,11 @@ from django.views import generic
 from finecap.forms import CadastroForms
 from finecap.models import Reserva
 
-class Indexview(generic.TemplateView):
+class Indexview(generic.ListView):
+    model = Reserva
     template_name = 'core/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = {'reserva': Reserva.objects.all()}
-        return context
-
+    context_object_name = 'reservas_list'
+    
 class DetalheReservaView(generic.DetailView):
     model = Reserva
     template_name = 'core/reserva.html'
