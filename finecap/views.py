@@ -34,17 +34,22 @@ class CadastroView(generic.CreateView):
     #     form = CadastroForms()
     # return render(request, 'core/cadastro.html', {'form': form})
 
-def EditarCadastroView(request,id):
-    reserva = get_object_or_404(Reserva, id=id)
-    if request.method == 'POST':
-        form = CadastroForms(request.POST, instance=reserva)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = CadastroForms(instance=reserva)
+class EditarCadastroView(generic.UpdateView):
+    model = Reserva
+    form_class = CadastroForms
+    success_url = reverse_lazy('index')
+    template_name = 'core/cadastro.html'
 
-    return render(request, 'core/cadastro.html', {'form': form})
+    # reserva = get_object_or_404(Reserva, id=id)
+    # if request.method == 'POST':
+    #     form = CadastroForms(request.POST, instance=reserva)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('index')
+    # else:
+    #     form = CadastroForms(instance=reserva)
+
+    # return render(request, 'core/cadastro.html', {'form': form})
 
 
 class ExcluirCadastroView(generic.DeleteView):

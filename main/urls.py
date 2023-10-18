@@ -26,7 +26,7 @@ urlpatterns = [
     path('', Indexview.as_view() ,name='index'),
     path('reserva/<int:pk>',DetalheReservaView.as_view(), name='reserva'),
     path('reserva/cadastro/', CadastroView.as_view(), name='cadastro'),
-    path('reserva/editarreserva/<int:id>', EditarCadastroView,name='editar'),
+    path('reserva/editarreserva/<int:pk>', EditarCadastroView.as_view(),name='editar'),
     path('reserva/excluirreserva/<int:pk>', ExcluirCadastroView.as_view(),name='excluir'),
 
 ]
