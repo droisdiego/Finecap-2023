@@ -67,7 +67,7 @@
 
 <div class="cards-container">
     {% for reserva_item in reservas_list %}
-    <a href="{% url 'reserva' id=reserva_item.id %}">
+    <a href="{% url 'reserva' pk=reserva_item.id %}">
         <ul>
             <li class="card">
                 <div>

@@ -24,10 +24,10 @@ from finecap.views import Indexview, DetalheReservaView, CadastroView, EditarCad
 urlpatterns = [
     path('admin/', admin.site.urls),    
     path('', Indexview.as_view() ,name='index'),
-    path('reserva/<int:id>',DetalheReservaView.as_view(), name='reserva'),
-    path('reserva/cadastro/', CadastroView, name='cadastro'),
+    path('reserva/<int:pk>',DetalheReservaView.as_view(), name='reserva'),
+    path('reserva/cadastro/', CadastroView.as_view(), name='cadastro'),
     path('reserva/editarreserva/<int:id>', EditarCadastroView,name='editar'),
-    path('reserva/excluirreserva/<int:id>', ExcluirCadastroView,name='excluir'),
+    path('reserva/excluirreserva/<int:pk>', ExcluirCadastroView.as_view(),name='excluir'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  

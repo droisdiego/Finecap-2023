@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.views import generic
 from finecap.forms import CadastroForms
 from finecap.models import Reserva
@@ -12,21 +13,26 @@ class Indexview(generic.ListView):
 class DetalheReservaView(generic.DetailView):
     model = Reserva
     template_name = 'core/reserva.html'
-    context_object_name = 'reserva'
+    # context_object_name = 'reserva'
 
-    def get_object(self, queryset=None):
-        id = self.kwargs.get('id')
-        return get_object_or_404(Reserva, id=id)
+    # def get_object(self, queryset=None):
+    #     id = self.kwargs.get('id')
+    #     return get_object_or_404(Reserva, id=id)
 
-def CadastroView(request):
-    if request.method == 'POST':
-        form = CadastroForms(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            form = CadastroForms()
-    else:
-        form = CadastroForms()
-    return render(request, 'core/cadastro.html', {'form': form})
+class CadastroView(generic.CreateView):
+    model = Reserva
+    form_class = CadastroForms
+    success_url = reverse_lazy('index')
+    template_name = 'core/cadastro.html'
+    
+    # if request.method == 'POST':
+    #     form = CadastroForms(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.save()
+    #         form = CadastroForms()
+    # else:
+    #     form = CadastroForms()
+    # return render(request, 'core/cadastro.html', {'form': form})
 
 def EditarCadastroView(request,id):
     reserva = get_object_or_404(Reserva, id=id)
@@ -41,7 +47,10 @@ def EditarCadastroView(request,id):
     return render(request, 'core/cadastro.html', {'form': form})
 
 
-def ExcluirCadastroView(request,id):
-    reserva = get_object_or_404(Reserva, id=id)
-    reserva.delete()
-    return redirect('index')
+class ExcluirCadastroView(generic.DeleteView):
+    model = Reserva
+    template_name = 'core/reserva_confirm_delete.html'
+    success_url = reverse_lazy('index')
+    # reserva = get_object_or_404(Reserva, id=id)
+    # reserva.delete()
+    # return redirect('index')
