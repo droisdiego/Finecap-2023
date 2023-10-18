@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-    
+
 {% block center %}
 <style>
     body a {
@@ -22,16 +22,16 @@
         flex-wrap: wrap;
         justify-content: center;
         list-style: none;
-        padding: 0;
+        padding: 20px;
     }
 
     .card {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
         flex: 0 0 200px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        padding: 10px;
+        padding: 20px;
         margin: 10px;
         box-shadow: 0 10px 15px rgba(154, 148, 148, 0.742);
         background-color: transparent;
@@ -49,15 +49,15 @@
     }
 
     .card h3 {
-        font-size: 100%;
+        font-size: 1.2em;
         margin: 0;
         margin-bottom: 5px;
 
     }
 
     .card p {
-        font-size: 14px;
-        margin: 40;
+        font-size: 16px;
+        margin: 10px 0;
     }
 
     li {
@@ -66,10 +66,11 @@
 </style>
 
 
+
 <div class="cards-container">
     {% for reserva_item in reservas_list %}
-    <a href="{% url 'reserva' pk=reserva_item.id %}">
-        <ul>
+
+    <ul><a href="{% url 'reserva' pk=reserva_item.id %}">
             <li class="card">
                 <div>
                     <h3>{{ reserva_item.nome_empresa }} </h3>
@@ -78,10 +79,11 @@
                 </div>
 
             </li>
-        </ul>
-    </a>
-
+        </a>
+    </ul>
 
     {% endfor %}
+
+
 </div>
 {% endblock center %}

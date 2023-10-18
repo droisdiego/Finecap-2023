@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>{% block title %}
-Finecap 2023{% endblock title %}</title>
-  
+    Finecap 2023{% endblock title %}</title>
+
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/basecss.css' %}">
@@ -21,8 +21,12 @@ Finecap 2023{% endblock title %}</title>
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
-            <a id="len1" class="hoverable" href="{% url 'index' %}"><li>Lista de Reservas</li></a>
-            <a id="len2" class="hoverable" href="{% url 'cadastro' %}"><li>Reserve Seu Stand</li></a>
+            <a id="len1" class="hoverable" href="{% url 'index' %}">
+              <li>Lista de Reservas</li>
+            </a>
+            <a id="len2" class="hoverable" href="{% url 'cadastro' %}">
+              <li>Reserve Seu Stand</li>
+            </a>
 
           </ul>
         </div>
@@ -40,11 +44,21 @@ Finecap 2023{% endblock title %}</title>
     </div>
     </div>
     <div>
+      <div class="mensagemcard">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <div>
 
       {% block center %}
 
       {% endblock center %}
-
 
     </div>
   </main>

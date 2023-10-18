@@ -107,6 +107,14 @@ nav {
   }
 }
 
+
+a{
+
+  text-decoration: none;
+  color: aliceblue;
+  margin: 35px;
+}
+
 .page-title {
   opacity: .75 !important;
 }
@@ -119,9 +127,15 @@ nav {
   display: inline-block;
     margin-right: 10px; 
 }
-a{
 
-  text-decoration: none;
-  color: aliceblue;
-  margin: 35px;
+.mensagemcard{
+  border-color: aliceblue;
+  border-radius: 40px;
+  background-color: rgba(154, 148, 148, 0.5);
+  color:aliceblue;;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  height: auto;
+  max-width: 500px;
+  margin: auto;
 }
+
