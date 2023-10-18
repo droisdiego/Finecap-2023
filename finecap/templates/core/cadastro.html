@@ -8,6 +8,17 @@
         margin: auto;
     }
 
+    button{
+        border-color: aliceblue;
+        border-radius: 40px;
+        background-color: transparent;
+        color:aliceblue;;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
+
     form {
         padding: 40px;
         border-radius: 40px;
@@ -25,19 +36,19 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="cnpj" class="form-label">CNPJ</label><br>
-            {{ form.cnpj }}
+            <div class="formlabel">{{ form.cnpj }}</div>
         </div>
         <div class="form-group">
             <label for="nome_empresa" class="form-label">Nome da Empresa</label><br>
-            {{ form.nome_empresa }}
+            <div class="formlabel">{{ form.nome_empresa }}</div>
         </div>
         <div class="form-group">
             <label for="categoria_empresa" class="form-label">Categoria da Empresa</label><br>
-            {{ form.categoria_empresa }}
+            <div class="formlabel">{{ form.categoria_empresa }}</div>
         </div>
         <div class="form-group">
             <label for="quitado" class="form-label">O valor foi quitado?</label><br>
-            {{ form.quitado }}
+            <div class="formlabel">{{ form.quitado }}</div>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
