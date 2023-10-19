@@ -11,6 +11,11 @@ class ReservaListView(generic.ListView):
     model = Reserva
     template_name = 'core/reserva_list.html'
     context_object_name = 'reservas_list'
+
+    paginate_by = 4  
+
+    # def get_queryset(self):
+    #     return Reserva.objects.all().order_by('pk')
     
 class DetalheReservaView(generic.DetailView):
     model = Reserva

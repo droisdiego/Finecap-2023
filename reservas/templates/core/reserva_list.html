@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block center %}
 <style>
     body a {
@@ -41,7 +40,6 @@
         justify-content: center;
         transition: box-shadow 1s;
         background: linear-gradient(131deg, rgba(0, 0, 0, 1) 0%, rgba(67, 2, 172, 0.8346988453584558) 100%);
-
     }
 
     .card:hover {
@@ -52,7 +50,6 @@
         font-size: 1.2em;
         margin: 0;
         margin-bottom: 5px;
-
     }
 
     .card p {
@@ -63,27 +60,51 @@
     li {
         list-style-type: none;
     }
+
+    .pagination-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+    }
+    .br-item {
+        
+        margin: 0 2px;
+    }
 </style>
-
-
 
 <div class="cards-container">
     {% for reserva_item in reservas_list %}
-
-    <ul><a href="{% url 'reserva' pk=reserva_item.id %}">
-            <li class="card">
-                <div>
-                    <h3>{{ reserva_item.nome_empresa }} </h3>
-                    <hr>
-                    <p>{{reserva_item.categoria_empresa}}</p>
-                </div>
-
-            </li>
-        </a>
-    </ul>
-
+        <ul>
+            <a href="{% url 'reserva' pk=reserva_item.id %}">
+                <li class="card">
+                    <div>
+                        <h3>{{ reserva_item.nome_empresa }} </h3>
+                        <hr>
+                        <p>{{reserva_item.categoria_empresa}}</p>
+                    </div>
+                </li>
+            </a>
+        </ul>
     {% endfor %}
-
-
 </div>
+
+<nav class="br-pagination" aria-label="Paginação de resultados" data-total="50" data-current="1" data-per-page="20">
+    <div class="pagination-container">
+        {% if page_obj.has_previous %}
+            <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+            {% if i == page_obj.number %}
+            <a class="pagination-link" href="?page={{ i }}" style="color: rgb(191, 113, 255);">{{ i }}</a>
+            {% else %}
+                <a class="pagination-link" href="?page={{ i }}">{{ i }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">Próxima</a>
+        {% endif %}
+    </div>
+</nav>
+
 {% endblock center %}

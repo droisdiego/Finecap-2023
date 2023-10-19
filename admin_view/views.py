@@ -5,3 +5,6 @@ from django.views import generic
 
 class AdminHomeView(generic.TemplateView):
     template_name = 'core3/home.html'
+
+class AdminLoginview(generic.TemplateView):
+    template_name = 'account/login.html'

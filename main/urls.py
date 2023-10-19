@@ -18,13 +18,17 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from reservas.views import IndexView,ReservaListView, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
 from stand.views import StandListView, DetalheStandView, CreateStandView, EditarStandView,ExcluirStandView
-from admin_view.views import AdminHomeView
+from admin_view.views import AdminHomeView, AdminLoginview
 
 urlpatterns = [
+    # general
     path('admin/', admin.site.urls), 
+    path('accounts/', include('allauth.urls')),
+
+    # reservas
     path('', IndexView.as_view(), name='index'),   
     path('reserva/', ReservaListView.as_view() ,name='lista_reserva'),
     path('reserva/cadastro/', CadastroView.as_view(), name='cadastro'),
@@ -32,12 +36,16 @@ urlpatterns = [
     path('reserva/editarreserva/<int:pk>', EditarCadastroView.as_view(),name='editar'),
     path('reserva/excluirreserva/<int:pk>', ExcluirCadastroView.as_view(),name='excluir'),
 
+    # stands
     path('stand/',StandListView.as_view(),name='lista_stand'),
     path('stand/cadastro/', CreateStandView.as_view(), name='stand_form'),
     path('stand/<int:pk>',DetalheStandView.as_view(), name='stand'),
     path('stand/editarreserva/<int:pk>', EditarStandView.as_view(),name='editar_stand'),
     path('stand/excluirreserva/<int:pk>', ExcluirStandView.as_view(),name='excluir_stand'),
 
-    path('exemplo/', AdminHomeView.as_view(),name='admin')
+    # admin_views
+    path('exemplo/', AdminHomeView.as_view(),name='admin'),
+    path('login/',AdminLoginview.as_view(),name='login')
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  
