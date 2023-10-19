@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'reservas',
     'stand',
+    'admin_view',
 ]
 
 MIDDLEWARE = [

@@ -21,6 +21,8 @@ from django.contrib import admin
 from django.urls import path
 from reservas.views import IndexView,ReservaListView, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
 from stand.views import StandListView, DetalheStandView, CreateStandView, EditarStandView,ExcluirStandView
+from admin_view.views import AdminHomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls), 
     path('', IndexView.as_view(), name='index'),   
@@ -36,5 +38,6 @@ urlpatterns = [
     path('stand/editarreserva/<int:pk>', EditarStandView.as_view(),name='editar_stand'),
     path('stand/excluirreserva/<int:pk>', ExcluirStandView.as_view(),name='excluir_stand'),
 
+    path('exemplo/', AdminHomeView.as_view(),name='admin')
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  
