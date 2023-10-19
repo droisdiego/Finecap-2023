@@ -12,7 +12,7 @@ class ReservaListView(generic.ListView):
     template_name = 'core/reserva_list.html'
     context_object_name = 'reservas_list'
 
-    paginate_by = 4  
+    paginate_by = 10  
 
     # def get_queryset(self):
     #     return Reserva.objects.all().order_by('pk')

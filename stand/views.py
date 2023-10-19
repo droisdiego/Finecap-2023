@@ -8,6 +8,7 @@ class StandListView(generic.ListView):
     model = Stand
     template_name = 'core2/stand_list.html'
     context_object_name = 'lista_stand'
+    paginate_by = 10 
     
 class DetalheStandView(generic.DetailView):
     model = Stand

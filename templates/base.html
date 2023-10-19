@@ -20,18 +20,18 @@
     <div class="container-fluid">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav" style="margin-top: 0px;">
             <a id="len1" class="hoverable" href="{% url 'index' %}">
               <li>Inicio</li>
             </a>
             <a id="len2" class="hoverable" href="{% url 'lista_reserva' %}">
               <li>Lista de Reservas</li>
             </a>
-            <a id="len3" class="hoverable" href="{% url 'cadastro' %}">
-              <li>Reserve Seu Espaço</li>
-            </a>
-            <a id="len4" class="hoverable" href="{% url 'lista_stand' %}">
+            <a id="len3" class="hoverable" href="{% url 'lista_stand' %}">
               <li>Lista de Stans</li>
+            </a>
+            <a id="len4" class="hoverable" href="{% url 'cadastro' %}">
+              <li>Faça Sua Reserva</li>
             </a>
             <a id="len5" class="hoverable" href="{% url 'stand_form' %}">
               <li>Reserve Seu Stand</li>
