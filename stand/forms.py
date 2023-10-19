@@ -3,11 +3,10 @@ from .models import Stand
 
 class StandForms(forms.ModelForm):
     
-    valor = forms.DecimalField(
-        max_digits=10, 
-        decimal_places=2, 
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
+    valor = forms.CharField(widget=forms.TextInput(attrs={"class": "money","placeholder": "Valor do stand",}))
+    def clean_valor(self):
+        valor = self.cleaned_data["valor"]
+        return valor.replace(",", ".")
 
     class Meta:   
         model = Stand

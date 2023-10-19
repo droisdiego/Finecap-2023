@@ -3,30 +3,39 @@
 {% block center %}
 
 <style>
-    
-    button{
-        border-color: aliceblue;
+    .caixa {
+        padding: 30px;
         border-radius: 40px;
-        background-color: transparent;
-        color:aliceblue;;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        background-color: rgba(255, 255, 255, 0.026);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         height: auto;
         max-width: 500px;
         margin: auto;
     }
 
+    button {
+        border-color: aliceblue;
+        border-radius: 40px;
+        background-color: transparent;
+        color: aliceblue;
+        ;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
 </style>
-
-<h1>Definir Reserva</h1>
-<form method="post">
-    <section class="form container-fluid p-5x">
-        {% csrf_token %}
-        <p> Você tem certeza que quer deletar a reserva do stand "{{ object }}"?</p>
-        {{ form }}
-    </section>
-    <button type="submit">
-        Confirmar
-    </button>
-</form>
-
+<div class="caixa">
+    <h1>Definir Reserva</h1>
+    <form method="post">
+        <section class="form container-fluid p-5x">
+            {% csrf_token %}
+            <p> Você tem certeza que quer deletar a reserva do stand "{{ object }}"?</p>
+            {{ form }}
+        </section>
+        <button type="submit">
+            Confirmar
+        </button>
+    </form>
+</div>
 {% endblock center %}
