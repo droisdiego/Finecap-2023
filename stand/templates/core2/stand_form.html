@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block center %}
+<style>
+    
+    .form-container {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    button{
+        border-color: aliceblue;
+        border-radius: 40px;
+        background-color: transparent;
+        color:aliceblue;;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    form {
+        padding: 40px;
+        border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.026);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="localizacao" class="form-label">Localização</label><br>
+            <div class="formlabel">{{ form.localizacao }}</div>
+        </div>
+        <div class="form-group">
+            <label for="valor" class="form-label">Valor</label><br>
+            <div class="formlabel">{{ form.valor }}</div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock center %}

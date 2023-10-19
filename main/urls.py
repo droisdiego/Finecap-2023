@@ -20,15 +20,21 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from reservas.views import IndexView,ReservaListView, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
-
+from stand.views import StandListView, DetalheStandView, CreateStandView, EditarStandView,ExcluirStandView
 urlpatterns = [
     path('admin/', admin.site.urls), 
     path('', IndexView.as_view(), name='index'),   
     path('reserva/', ReservaListView.as_view() ,name='lista_reserva'),
-    path('reserva/<int:pk>',DetalheReservaView.as_view(), name='reserva'),
     path('reserva/cadastro/', CadastroView.as_view(), name='cadastro'),
+    path('reserva/<int:pk>',DetalheReservaView.as_view(), name='reserva'),
     path('reserva/editarreserva/<int:pk>', EditarCadastroView.as_view(),name='editar'),
     path('reserva/excluirreserva/<int:pk>', ExcluirCadastroView.as_view(),name='excluir'),
+
+    path('stand/',StandListView.as_view(),name='lista_stand'),
+    path('stand/cadastro/', CreateStandView.as_view(), name='stand_form'),
+    path('stand/<int:pk>',DetalheStandView.as_view(), name='stand'),
+    path('stand/editarreserva/<int:pk>', EditarStandView.as_view(),name='editar_stand'),
+    path('stand/excluirreserva/<int:pk>', ExcluirStandView.as_view(),name='excluir_stand'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  

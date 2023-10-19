@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+{{object}} Finecap 23
+{% endblock title %}
+{% block center %}
+
+<style>
+    .caixa {
+        padding: 30px;
+        border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.026);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    button {
+        border-color: aliceblue;
+        border-radius: 40px;
+        background-color: transparent;
+        color: aliceblue;
+        ;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        height: auto;
+        max-width: 500px;
+        margin: auto;
+    }
+</style>
+
+<body>
+
+
+    <div class="caixa">
+
+
+        <h1>{{stand.nome_empresa}}</h1>
+
+        <h3>O stand <span style="color: rgba(147, 205, 246, 0.835);">{{stand.localizacao}}</span> tem um valor
+            logistico de <span style="color: rgba(147, 205, 246, 0.835);">{{stand.valor}}</span> <br>
+            <br>
+            <br>
+
+            <div>
+                <a href="{% url 'editar_stand' pk=stand.id %}"><button type="button">Editar</button>
+                </a>
+                <a href="{% url 'excluir_stand' pk=stand.id %}"><button type="button">Excluir</button>
+                </a>
+            </div>
+    </div>
+
+</body>
+{% endblock center %}
