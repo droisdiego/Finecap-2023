@@ -4,9 +4,12 @@ from reservas.forms import CadastroForms
 from reservas.models import Reserva
 from django.contrib import messages
 
-class Indexview(generic.ListView):
-    model = Reserva
+class IndexView(generic.TemplateView):
     template_name = 'core/index.html'
+
+class ReservaListView(generic.ListView):
+    model = Reserva
+    template_name = 'core/reserva_list.html'
     context_object_name = 'reservas_list'
     
 class DetalheReservaView(generic.DetailView):
@@ -16,7 +19,7 @@ class DetalheReservaView(generic.DetailView):
 class CadastroView(generic.CreateView):
     model = Reserva
     form_class = CadastroForms
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('lista_reserva')
     template_name = 'core/cadastro.html'
 
     def form_valid(self, form):
@@ -26,7 +29,7 @@ class CadastroView(generic.CreateView):
 class EditarCadastroView(generic.UpdateView):
     model = Reserva
     form_class = CadastroForms
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('lista_reserva')
     template_name = 'core/cadastro.html'
 
     def form_valid(self, form):
@@ -36,7 +39,7 @@ class EditarCadastroView(generic.UpdateView):
 class ExcluirCadastroView(generic.DeleteView):
     model = Reserva
     template_name = 'core/reserva_confirm_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('lista_reserva')
 
     def form_valid(self, form):
         messages.success(self.request, 'A Reserva Foi Excluída Com Sucesso!')

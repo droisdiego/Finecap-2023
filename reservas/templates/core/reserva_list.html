@@ -3,26 +3,6 @@
 
 {% block center %}
 <style>
-    .caixa {
-        padding: 30px;
-        border-radius: 40px;
-        background-color: rgba(255, 255, 255, 0.026);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        height: auto;
-        max-width: 500px;
-        margin: auto;
-    }
-</style>
-
-<div class="caixa">
-    <h1>
-        Projeto Finecap 2023
-        <hr>
-        
-    </h1>
-</div>
-
-<!-- <style>
     body a {
         color: inherit;
         text-decoration: none;
@@ -45,7 +25,6 @@
         padding: 20px;
     }
 
-
     .card {
         width: 200px;
         height: 200px;
@@ -59,7 +38,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         transition: box-shadow 1s;
         background: linear-gradient(131deg, rgba(0, 0, 0, 1) 0%, rgba(67, 2, 172, 0.8346988453584558) 100%);
 
@@ -83,38 +62,28 @@
 
     li {
         list-style-type: none;
-        justify-content: space-around;
     }
 </style>
- -->
-
-
-<!-- <div class="cards-container">
-
-
-    <div class="cards-container">
-        <ul class="cards-list">
-            <a href="{% url 'lista_reserva' %}">
-                <li class="card">
-                    <div>
-                        <h3>Lista de Reservas</h3>
-                        <hr>
-                    </div>
-                </li>
-            </a>
-            <a href="{% url 'lista_reserva' %}">
-                <li class="card">
-                    <div>
-                        <h3>Lista de Stands</h3>
-                        <hr>
-                    </div>
-                </li>
-             </a>
-        </ul>
-    </div> 
 
 
 
+<div class="cards-container">
+    {% for reserva_item in reservas_list %}
 
-</div> -->
+    <ul><a href="{% url 'reserva' pk=reserva_item.id %}">
+            <li class="card">
+                <div>
+                    <h3>{{ reserva_item.nome_empresa }} </h3>
+                    <hr>
+                    <p>{{reserva_item.categoria_empresa}}</p>
+                </div>
+
+            </li>
+        </a>
+    </ul>
+
+    {% endfor %}
+
+
+</div>
 {% endblock center %}
