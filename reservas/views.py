@@ -22,7 +22,7 @@ class IndexView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context["total_reserva"] = Reserva.objects.count()
         context["total_stands"] = Stand.objects.count()
-        return context()
+        return context
 
 class ReservaListView(generic.ListView):
     model = Reserva

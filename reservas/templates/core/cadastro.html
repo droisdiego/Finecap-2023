@@ -29,6 +29,22 @@
     .form-group {
         margin-bottom: 20px;
     }
+    
+    input[type="text"] {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    width: 250px;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
 </style>
 
 <div class="form-container">
@@ -43,7 +59,7 @@
             <div class="formlabel">{{ form.nome_empresa }}</div>
         </div>
 
-        
+
         <div class="form-group">
             <label for="categoria_empresa" class="form-label">Categoria da Empresa</label><br>
             <div class="formlabel">{{ form.categoria_empresa }}</div>
