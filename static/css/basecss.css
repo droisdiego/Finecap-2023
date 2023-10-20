@@ -115,7 +115,20 @@ body {
   
 }
 
+input[type="text"] {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    width: 250px;
+}
 
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
 
 nav {
   background: none !important;
