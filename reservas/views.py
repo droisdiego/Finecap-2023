@@ -1,8 +1,13 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from reservas.forms import CadastroForms
 from reservas.models import Reserva
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 class IndexView(generic.TemplateView):
     template_name = 'core/index.html'
@@ -21,7 +26,14 @@ class DetalheReservaView(generic.DetailView):
     model = Reserva
     template_name = 'core/reserva_detail.html'
 
-class CadastroView(generic.CreateView):
+class AdminRequiredMixin:
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('erro') 
+        return super().dispatch(request, *args, **kwargs)
+
+class CadastroView(AdminRequiredMixin, generic.CreateView):
     model = Reserva
     form_class = CadastroForms
     success_url = reverse_lazy('lista_reserva')
@@ -31,7 +43,7 @@ class CadastroView(generic.CreateView):
         messages.success(self.request, 'Reserva Criada Com Sucesso!')
         return super().form_valid(form)
     
-class EditarCadastroView(generic.UpdateView):
+class EditarCadastroView(AdminRequiredMixin, generic.UpdateView):
     model = Reserva
     form_class = CadastroForms
     success_url = reverse_lazy('lista_reserva')
@@ -41,7 +53,7 @@ class EditarCadastroView(generic.UpdateView):
         messages.success(self.request, 'Alterações Concluidas!')
         return super().form_valid(form)
 
-class ExcluirCadastroView(generic.DeleteView):
+class ExcluirCadastroView(AdminRequiredMixin,generic.DeleteView):
     model = Reserva
     template_name = 'core/reserva_confirm_delete.html'
     success_url = reverse_lazy('lista_reserva')
@@ -50,3 +62,5 @@ class ExcluirCadastroView(generic.DeleteView):
         messages.success(self.request, 'A Reserva Foi Excluída Com Sucesso!')
         return super().form_valid(form)
     
+class ErroView(generic.TemplateView):
+    template_name = 'core/erro.html'

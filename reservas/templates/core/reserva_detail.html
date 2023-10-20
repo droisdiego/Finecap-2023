@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{object}} Finecap 23
+{{object}} Finecap 23
 {% endblock title %}
 {% block center %}
 
@@ -14,11 +14,13 @@
         max-width: 500px;
         margin: auto;
     }
-    button{
+
+    button {
         border-color: aliceblue;
         border-radius: 40px;
         background-color: transparent;
-        color:aliceblue;;
+        color: aliceblue;
+        ;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
         height: auto;
         max-width: 500px;
@@ -28,7 +30,7 @@
 
 <body>
 
-    
+
     <div class="caixa">
 
 
@@ -50,11 +52,15 @@
         <h3 style="color: rgb(221, 141, 141);">Ainda precisa confirmar a presença</h3>
         {% endif %}
         <div>
+            {% if user.is_staff %}
             <a href="{% url 'editar' pk=reserva.id %}"><button type="button">Editar</button>
-        </a>
-        <a href="{% url 'excluir' pk=reserva.id %}"><button type="button">Excluir</button>
-    </a></div>
+            </a>
+            <a href="{% url 'excluir' pk=reserva.id %}"><button type="button">Excluir</button>
+            </a>
+            {% endif %}
+
+        </div>
     </div>
-    
+
 </body>
 {% endblock center %}

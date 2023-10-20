@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from reservas.views import IndexView,ReservaListView, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
+from reservas.views import ErroView, IndexView,ReservaListView, DetalheReservaView, CadastroView, EditarCadastroView,ExcluirCadastroView
 from stand.views import StandListView, DetalheStandView, CreateStandView, EditarStandView,ExcluirStandView
 # from admin_view.views import AdminHomeView, AdminLoginview
 
@@ -35,6 +35,7 @@ urlpatterns = [
     path('reserva/<int:pk>',DetalheReservaView.as_view(), name='reserva'),
     path('reserva/editarreserva/<int:pk>', EditarCadastroView.as_view(),name='editar'),
     path('reserva/excluirreserva/<int:pk>', ExcluirCadastroView.as_view(),name='excluir'),
+    path('reserva/erro/', ErroView.as_view(), name='erro'),
 
     # stands
     path('stand/',StandListView.as_view(),name='lista_stand'),
