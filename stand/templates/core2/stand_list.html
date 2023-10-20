@@ -28,11 +28,13 @@
     .card {
         width: 100px;
         height: 100px;
-        flex: 0 0 200px;
+        flex: 0 0 100px;
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 20px;
-        margin: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-inline: 40px;
         box-shadow: 0 10px 15px rgba(154, 148, 148, 0.742);
         background-color: transparent;
         display: flex;
@@ -41,7 +43,6 @@
         justify-content: center;
         transition: box-shadow 1s;
         background: linear-gradient(131deg, rgba(0, 0, 0, 1) 0%, rgba(67, 2, 172, 0.8346988453584558) 100%);
-
     }
 
     .card:hover {
@@ -52,7 +53,6 @@
         font-size: 1.2em;
         margin: 0;
         margin-bottom: 5px;
-
     }
 
     .card p {
@@ -62,6 +62,17 @@
 
     li {
         list-style-type: none;
+    }
+
+    .pagination-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+    }
+    .br-item {
+        
+        margin: 0 2px;
     }
 </style>
 
