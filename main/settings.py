@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'reservas',
     'stand',
-    'admin_view',
+    'user',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     # 'django-adminlite3',
     
 ]
@@ -116,14 +117,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    # ...
+   
     'allauth.account.auth_backends.AuthenticationBackend',
-    # ...
+    
+]
+
+AUTHENTICATION_CLASSES = [
+    
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
 ]
 
 SITE_ID = 1
 
-# Configuração de URLs para Allauth
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -150,3 +156,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
