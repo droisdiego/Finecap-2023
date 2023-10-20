@@ -88,15 +88,34 @@
   }
 }
 
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
 body {
   background: rgb(0, 0, 0);
-  background: linear-gradient(131deg, rgba(0, 0, 0, 1) 0%, rgba(67, 2, 172, 0.8431022067029936) 100%);
+  background: linear-gradient(45deg, #000000, #2f065e);  
+  background-size: 150% 150%;
+  animation: colorChange 10s infinite;
   font-weight: 600;
   text-align: center !important;
   color: white;
   min-height: 98vh;
-
+  
 }
+
+
 
 nav {
   background: none !important;
