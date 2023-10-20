@@ -13,7 +13,7 @@ class IndexView(generic.TemplateView):
     template_name = 'core/index.html'
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_staff:
+        if not request.user.is_active:
             return redirect('erro') 
         return super().dispatch(request, *args, **kwargs)
 
