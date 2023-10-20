@@ -11,6 +11,11 @@ from django.utils.decorators import method_decorator
 
 class IndexView(generic.TemplateView):
     template_name = 'core/index.html'
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            return redirect('erro') 
+        return super().dispatch(request, *args, **kwargs)
 
 class ReservaListView(generic.ListView):
     model = Reserva

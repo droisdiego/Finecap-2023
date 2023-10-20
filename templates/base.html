@@ -16,11 +16,7 @@
 </head>
 
 <body>
-  {% if user.is_authenticated %}
-  <a href="{% url 'account_logout' %}">Logout</a>
-  {% else %}
-  <a href="{% url 'account_login' %}">Login</a>
-  {% endif %}
+
   <script src="{% static 'js/basejs.js' %}"></script>
   <header>
     <div class="container-fluid">
@@ -45,6 +41,16 @@
             </a>
             <a id="len5" class="hoverable" href="{% url 'stand_form' %}">
               <li>Reserve Seu Stand</li>
+            </a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <a id="len6" class="hoverable" href="{% url 'account_logout' %}" style="background-color: rgba(195, 192, 192, 0.473);border-radius: 50px;">
+              <li style="padding: 0%;margin: 5px 10px 5px 10px;">Logout</li>
+            </a>
+            {% else %}
+            <a id="len6" class="hoverable" href="{% url 'account_login' %}"style="background-color: rgba(195, 192, 192, 0.473);border-radius: 50px;">
+              <li style="padding: 0%;margin: 5px 10px 5px 10px;">Login</li> 
             </a>
             {% endif %}
 

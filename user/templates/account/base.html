@@ -108,12 +108,21 @@
     border-radius: 40px;
     background-color: transparent;
     color: aliceblue;
-    ;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
     height: auto;
     max-width: 500px;
     margin: auto;
   }
+
+  .mensagemcard {
+  border-radius: 40px;
+  background-color: rgba(154, 148, 148, 0.2);
+  color: aliceblue;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  height: auto;
+  max-width: 500px;
+  margin: auto;
+}
 </style>
 
 
@@ -129,17 +138,18 @@
 
 <body>
   {% block body %}
-
-  {% if messages %}
-  <div>
-    <strong>{% trans "Messages:" %}</strong>
-    <ul>
-      {% for message in messages %}
-      <li>{{message}}</li>
-      {% endfor %}
-    </ul>
+  <div class="mensagemcard">
+    {% if messages %}
+    <div>
+      <strong>{% trans "Messages:" %}</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </div>
-  {% endif %}
 
   <nav>
     <strong></strong>
