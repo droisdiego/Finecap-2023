@@ -42,10 +42,12 @@
             <br>
 
             <div>
+                {% if user.is_staff %}
                 <a href="{% url 'editar_stand' pk=stand.id %}"><button type="button">Editar</button>
                 </a>
                 <a href="{% url 'excluir_stand' pk=stand.id %}"><button type="button">Excluir</button>
                 </a>
+                {% endif %}
             </div>
     </div>
 
