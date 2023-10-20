@@ -7,19 +7,64 @@
         padding: 30px;
         border-radius: 40px;
         background-color: rgba(255, 255, 255, 0.026);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px rgba(154, 148, 148, 0.742);
         height: auto;
         max-width: 500px;
         margin: auto;
     }
-</style>
 
-<div class="caixa">
-    <h1>
-        Projeto Finecap 2023
-        <hr>
-        
-    </h1>
+    .card {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ddd;
+        border-radius: 40px;
+        padding: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-inline: 40px;
+        box-shadow: 0 10px 15px rgba(154, 148, 148, 0.742);
+        background-color: transparent;
+        display: flex;
+        flex-direction: line;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 1s;
+        background: linear-gradient(131deg, rgba(0, 0, 0, 0.1) 0%, rgba(67, 2, 172, 0.1) 100%);
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 20px;
+    }
+</style>
+<div class="center">
+    <div class="caixa">
+        <h1>
+            Projeto Finecap 2023
+            <hr>
+
+        </h1>
+    </div>
+    <div class="cards-container">
+        <div class="card">
+            <h3>
+                Total de Reservas
+                <hr>
+                <p>{{ total_reserva }}</p>
+            </h3>
+        </div>
+        <div class="card">
+            <h3>
+                Total de Stands
+                <hr>
+                <p>{{ total_stands }}</p>
+
+            </h3>
+        </div>
+    </div>
 </div>
 
 <!-- <style>

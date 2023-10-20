@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from reservas.forms import CadastroForms
 from reservas.models import Reserva
+from stand.models import Stand
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required
@@ -16,6 +17,12 @@ class IndexView(generic.TemplateView):
         if not request.user.is_active:
             return redirect('erro') 
         return super().dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["total_reserva"] = Reserva.objects.count()
+        context["total_stands"] = Stand.objects.count()
+        return context()
 
 class ReservaListView(generic.ListView):
     model = Reserva
