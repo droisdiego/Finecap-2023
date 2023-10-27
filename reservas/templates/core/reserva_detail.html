@@ -52,6 +52,11 @@
         <h3 style="color: rgb(221, 141, 141);">Ainda precisa confirmar a presença</h3>
         {% endif %}
         <div>
+            <h3>
+                O Local reservado se localiza na <span style="color:rgba(147, 205, 246, 0.835);">{{reserva.stand_key}}</span>
+            </h3>
+        </div>
+        <div>
             {% if user.is_staff %}
             <a href="{% url 'editar' pk=reserva.id %}"><button type="button">Editar</button>
             </a>

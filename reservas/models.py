@@ -1,11 +1,13 @@
 from django.db import models
+from stand.models import Stand
 
 class Reserva(models.Model):
     cnpj = models.CharField(max_length=50)
     nome_empresa = models.CharField(max_length=100)
     categoria_empresa = models.CharField(max_length=100)
     quitado = models.BooleanField()
-
+    stand_key = models.ForeignKey(Stand, on_delete=models.CASCADE)
+    
     objects = models.Manager()
 
     def __str__(self):

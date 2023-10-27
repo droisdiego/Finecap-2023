@@ -68,6 +68,11 @@ input[type="text"]:focus {
             <label for="quitado" class="form-label">O valor foi quitado?</label><br>
             <div class="formlabel">{{ form.quitado }}</div>
         </div>
+        <div class="form-group">
+            <label for="stand_escolha" class="form-label">Qual o stand?</label><br>
+            {{ form.stand_key }}
+        </div>
+
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>

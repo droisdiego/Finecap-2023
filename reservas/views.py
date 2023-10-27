@@ -51,6 +51,11 @@ class CadastroView(AdminRequiredMixin, generic.CreateView):
     success_url = reverse_lazy('lista_reserva')
     template_name = 'core/cadastro.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form_class(stands=Stand.objects.all())
+        return context
+
     def form_valid(self, form):
         messages.success(self.request, 'Reserva Criada Com Sucesso!')
         return super().form_valid(form)
